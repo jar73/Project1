@@ -1,0 +1,100 @@
+main {
+  flex: 1 0 80%;
+  margin: 10px;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+label {
+  flex: 0 0 25%;
+}
+
+textarea,
+input,
+div {
+  flex: 0 0 70%;
+  margin-bottom: 10px;
+}
+
+textarea {
+  height: 150px;
+}
+
+label[for=theme-switch] {
+  flex: 0 0 80%;
+}
+
+#theme-switch {
+  margin-bottom: 30px;
+  flex: 0 0 16%;
+}
+
+label[for=actions] {
+  flex: 0 0 75%;
+}
+
+#actions {
+  margin-bottom: 30px;
+  flex: 1 1 25%;
+}
+
+.push {
+  margin-left: auto;
+}
+
+.urgency {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+.urgency-selector {
+  margin: 0;
+}
+
+.urgency-selector li {
+  list-style: none;
+}
+
+.hide {
+  display: none;
+}
+
+.rating {
+  width: 90px;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+  position: relative;
+}
+
+.importance > label {
+  float: right;
+  display: inline;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  width: 1.1em;
+  cursor: pointer;
+  color: lightgray;
+}
+
+.importance > label:hover,
+.importance > label:hover ~ label,
+.importance > input.radio-btn:checked ~ label {
+  color: var(--control-color);
+}
+
+.importance > label:hover: before,
+.importance > label:hover ~ label:before,
+.importance > input.radio-btn:checked ~ label:before,
+.importance > input.radio-btn:checked ~ label:before {
+  content: "\21AF";
+  position: absolute;
+  left: 0;
+  color: black;
+}

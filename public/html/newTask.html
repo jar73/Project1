@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager - Details</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+
+    <script src="../libs/handlebars.min-v4.7.6.js" defer></script>
+    <script src="../scripts/util/utils.js" defer></script>
+
+    <link rel="stylesheet" type="text/css" href="../css/documentStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/taskDetail.css">
+
+    <script src="../scripts/bootstrapperNewTask.js" type="module" defer></script>
+</head>
+<body>
+
+<main>
+
+    <form id="new-task-form" method="POST" action="newTask.html" >
+        <label for="theme-switch"></label>
+        <select id="theme-switch">
+            <option value="dark">Light theme</option>
+            <option value="light">Dark theme</option>
+        </select>
+        <input id="_id" type="hidden" name="_id" required/>
+
+        <label for="title">Title</label>
+        <input id="title" type="text" name="title" required/>
+
+        <label for="description">Description</label>
+        <textarea id="description" name="description" required/></textarea>
+
+        <label for="importance">Importance</label>
+        <div id="importance" class="importance">
+            <input id="importance5" name="importance" type="radio" value="5" class="radio-btn hide" />
+            <label for="importance5" >&#x21AF;</label>
+            <input id="importance4" name="importance" type="radio" value="4" class="radio-btn hide" />
+            <label for="importance4" >&#x21AF;</label>
+            <input id="importance3" name="importance" type="radio" value="3" class="radio-btn hide" />
+            <label for="importance3" >&#x21AF;</label>
+            <input id="importance2" name="importance" type="radio" value="2" class="radio-btn hide" />
+            <label for="importance2" >&#x21AF;</label>
+            <input id="importance1" name="importance" type="radio" value="1" class="radio-btn hide" />
+            <label for="importance1" >&#x21AF;</label>
+            <div class="clear"></div>
+        </div>
+
+        <label for="dueDate">Finished by</label>
+        <input id="dueDate" type="date" required name="dueDate"/>
+
+        <label for="actions"></label>
+        <div id="actions">
+            <button class="btn" type="submit" data-action="addTask" value="Save">Save</button>
+            <button class="btn" type="reset" data-action="reset" value="Cancel">Cancel</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>

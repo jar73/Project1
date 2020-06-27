@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    <link href="../images/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <script defer src="../libs/handlebars.min-v4.7.6.js"></script>
+    <script defer src="../scripts/util/utils.js"></script>
+    <link href="../css/documentStyle.css" rel="stylesheet" type="text/css">
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+
+    <script defer src="../scripts/bootstrapper.js" type="module"></script>
+
+    <script id="status-template" type="text/x-handlebars-template">
+        <div class="status">{{#ifCond visibleCount '===' totalCount}}{{totalCount}}{{else}}{{visibleCount}} of {{totalCount}}{{/ifCond}} tasks visible</div>
+    </script>
+
+    <script id="task-list-template" type="text/x-handlebars-template">
+        {{#each tasks}}
+            <div class="task" itemid="{{_id}}">
+                <div class="due">{{calcDueDate dueDate}}</div>
+                <div class="title" id="title">{{name}}</div>
+                <div class="importance level-{{importance}}">{{calcImportanceString importance}}</div>
+                <div class="finished"><input type="checkbox" id="finished_{{@index}}" name="finished" value="{{_id}}" {{#if finishDate}}checked disabled{{/if}}/> <label for="finished">Finished</label></div>
+                <div class="description"><textarea name="desc" readonly>{{description}}</textarea> </div>
+                <div class="action"><button class="btn" id="editTask_{{@index}}"  value="{{_id}}" type="button">Edit</button></div>
+                <div class="details">Created {{formatDateShort creationDate}} {{#if finishDate}}Finished{{formatDateShort finishDate}}{{/if}}</div>
+            </div>
+        {{/each}}
+    </script>
+</head>
+<body >
+<form>
+
+    <main>
+        <div id="container">
+            <div class="create">
+                <button class="btn" id="newTask" type="button">New task</button>
+            </div>
+            <div class="style">
+                <div class="style" id="style">
+                    <select id="theme-switch">
+                        <option value="dark">Dark theme</option>
+                        <option selected value="light">Light theme</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="sort" >
+                <ul class="radio-toggle">
+                    <li><input class="btn" id="finishDate" name="sortGroup" type="radio" value="finishDate"><label for="finishDate">By finish date</label></li>
+                    <li><input class="btn" id="creationDate" name="sortGroup" type="radio" value="creationDate"><label for="creationDate">By creation date</label></li>
+                    <li><input class="btn" id="importance" name="sortGroup" type="radio" value="importance"><label for="importance">By importance</label></li>
+                </ul>
+            </div>
+            <div class="filter">
+                <ul class="radio-toggle">
+                    <li><input id="finish" name="filterGroup"  type="radio" value="finish"><label for="finish">Show finished</label></li>
+                </ul>
+            </div>
+
+            <div class="tasks">
+                <div id="status-container">
+                </div>
+                <div id="task-container">
+                </div>
+            </div>
+
+        </div>
+    </main>
+</form>
+</body>
+</html>
